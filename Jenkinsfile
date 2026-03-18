@@ -5,6 +5,11 @@ pipeline {
     }
     stages {
         stage('build-install-deps') {
+            when {
+                not {
+                    changeset "README.md"
+                }
+            }
             steps {
                 script{
                     build()
