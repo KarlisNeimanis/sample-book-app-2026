@@ -10,10 +10,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
-      - name: Print step name
-        run: echo "Installing all necessary node dependencies.."
-      - name: List all files
-        run: ls
+      - run: echo "Installing all necessary node dependencies.."
+      - name: Install all dependencies
+        run: npm install
+      - run: echo "Dependecies successfully installed.." 
   deploy-dev:
     runs-on: self-hosted
     needs: build-install-deps
