@@ -25,7 +25,7 @@ jobs:
       - name: Cleanup of old running service
         run: node_modules/.bin/pm2 delete \"books-dev\" || exit 0"
       - name: Rnning service
-        run: node_modules/.bin/pm2 delete \"books-dev\" || exit 0"
+        run: node_modules/.bin/pm2 start -n \"books-dev\" index.js -- 1010""
       - run: echo "Deployment to DEV environment finished.."
   test-dev:
     runs-on: self-hosted
