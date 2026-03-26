@@ -62,29 +62,31 @@ pipeline {
 }
 
 def build(){
-    echo "Installing all necessary node dependencies.." 
-    sh "npm install"
-    echo "Dependecies successfully installed.." 
+    echo "Building sample-book-app.." 
+    sh "docker build -t mtararujs/sample-book-app:${BUILD_NUMBER} ."
+   
+    echo "Pushing image to docker registry.." 
+    sh "docker push mtararujs/sample-book-app:${BUILD_NUMBER}"
 }
 
 def deploy(String environment, int port){
-    echo "Deployment to ${environment} environment has started.."
-    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/sample-book-app-2026.git'
-    sh "npm install"
-    sh "ls"
-    sh "node_modules/.bin/pm2 delete \"books-${environment}\" || exit 0"
-    sh "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
-    // sh "node_modules/.bin/pm2 reload -n \"books-${environment}\" index.js -- ${port}" //using 1 command to relaod service
-    // sh "pm2 start -n "books-${environment}" index.js -- ${port}"
-    // sh "pm2 start -n \"books-${environment}\" index.js -- ${port}"
-    // bat "node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
-    echo "Deployment to ${environment} environment finished.."
+    // echo "Deployment to ${environment} environment has started.."
+    // git branch: 'main', poll: false, url: 'https://github.com/mtararujs/sample-book-app-2026.git'
+    // sh "npm install"
+    // sh "ls"
+    // sh "node_modules/.bin/pm2 delete \"books-${environment}\" || exit 0"
+    // sh "node_modules/.bin/pm2 start -n \"books-${environment}\" index.js -- ${port}"
+    // // sh "node_modules/.bin/pm2 reload -n \"books-${environment}\" index.js -- ${port}" //using 1 command to relaod service
+    // // sh "pm2 start -n "books-${environment}" index.js -- ${port}"
+    // // sh "pm2 start -n \"books-${environment}\" index.js -- ${port}"
+    // // bat "node_modules\\.bin\\pm2 start -n \"books-${environment}\" index.js -- -- ${port}"
+    // echo "Deployment to ${environment} environment finished.."
 }
 
 def test(String environment){
-    echo "Testing Sample Book Application service has started on ${environment} environment.."
-    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/RTU-sample-API-automation-2026.git'
-    sh "npm install"
-    sh "npm run books BOOKS_${environment}"
-    echo "Testing Sample Book Application service finished.."
+    // echo "Testing Sample Book Application service has started on ${environment} environment.."
+    // git branch: 'main', poll: false, url: 'https://github.com/mtararujs/RTU-sample-API-automation-2026.git'
+    // sh "npm install"
+    // sh "npm run books BOOKS_${environment}"
+    // echo "Testing Sample Book Application service finished.."
 }
