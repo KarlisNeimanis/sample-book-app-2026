@@ -72,8 +72,8 @@ def deploy(String environment, int port){
     git branch: 'main', poll: false, url: 'https://github.com/KarlisNeimanis/RTU-sample-API-automation-2026.git'
     bat "npm install"
     bat "dir"
-    bat "node_modules\\.bin\\pm2.cmd delete \"books-${environment}\""
-    bat "node_modules\\.bin\\pm2.cmd start -n \"books-${environment}\" index.js -- ${port}"
+    bat "pm2 delete \"books-${environment}\""
+    bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
     //bat "node_modules//.bin//pm2 reload -n \"books-${environment}\" index.js -- ${port}"
     bat "dir"
     echo "Deployment to ${environment} environment finished.."
