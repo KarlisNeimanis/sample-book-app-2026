@@ -64,7 +64,6 @@ pipeline {
 def build(){
     echo "Building sample-book-app.." 
     powershell "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass"
-    powershell "y"
     powershell "npm install"
     echo "Pushing image to docker registry.." 
 }
