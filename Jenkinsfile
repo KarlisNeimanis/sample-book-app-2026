@@ -63,13 +63,13 @@ pipeline {
 
 def build(){
     echo "Building sample-book-app.." 
-    sh "npm install"
+    bat "npm install"
     echo "Pushing image to docker registry.." 
 }
 
 def deploy(String environment){
     echo "Deployment to ${environment} environment has started.."
-    sg "ls"
+    bat "ls"
     echo "Deployment to ${environment} environment finished.."
 }
 
