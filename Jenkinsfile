@@ -63,15 +63,13 @@ pipeline {
 
 def build(){
     echo "Building sample-book-app.." 
-    powershell "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass"
-    powershell "npm install"
+    bat "npm install"
     echo "Pushing image to docker registry.." 
 }
 
 def deploy(String environment){
     echo "Deployment to ${environment} environment has started.."
-    powershell "ls"
-    echo "Deployment to ${environment} environment finished.."
+    bat "Deployment to ${environment} environment finished.."
 }
 
 def test(String environment){
