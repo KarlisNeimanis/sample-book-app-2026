@@ -69,7 +69,7 @@ def build(){
 
 def deploy(String environment, int port){
     echo "Deployment to ${environment} environment has started.."
-    bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
+    bat "npx pm2 start -n \"books-${environment}\" index.js -- ${port}"
     exho "Deployment to ${environment} environment finished.."
 }
 
