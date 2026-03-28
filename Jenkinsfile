@@ -69,7 +69,8 @@ def build(){
 
 def deploy(String environment){
     echo "Deployment to ${environment} environment has started.."
-    bat "Deployment to ${environment} environment finished.."
+    bat "pm2 start -n "books-${environment}" index.js -- 3000"
+    exho "Deployment to ${environment} environment finished.."
 }
 
 def test(String environment){
